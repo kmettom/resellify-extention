@@ -1,6 +1,7 @@
 # Environment Configuration
 .env
 .env.*
+.idea
 
 # Dependency directory
 node_modules
