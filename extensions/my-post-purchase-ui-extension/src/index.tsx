@@ -67,6 +67,7 @@ export function App({ storage, inputData }) {
                     { viewportSize: "large", sizes: [400, 30, 0.33] },
                 ]}
             >
+
                 <View>
                     <BlockStack spacing="loose">
                         <TextContainer>
