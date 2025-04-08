@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "d850df0b4a818eddfb5c6e36712c8d73"
-name = "resellify extention"
+name = "resellify"
 handle = "resellify-widget-extention"
 application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
