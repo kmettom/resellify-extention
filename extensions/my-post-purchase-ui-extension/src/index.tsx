@@ -30,9 +30,8 @@ render("Checkout::PostPurchase::Render", App);
 export function App({ storage, inputData }) {
 
     console.log("storage", storage, inputData)
-    // const { order } = storage.initialData;
 
-    const orderData = {
+    const order = {
         lineItems: inputData.initialPurchase.lineItems.map(item => ({
             id: item.product.id,
             title: item.product.id,
@@ -42,7 +41,6 @@ export function App({ storage, inputData }) {
         totalPrice: inputData.initialPurchase.totalPriceSet.presentmentMoney.amount
     };
 
-    const order = orderData;
 
     if (!order || !order.lineItems) {
         return (
