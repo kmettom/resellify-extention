@@ -83,6 +83,9 @@ export function App({ storage, inputData }) {
                                 Total: ${order.totalPrice}
                             </TextBlock>
                         </TextContainer>
+                        <Button >
+                            Add to Resellify
+                        </Button>
                     </BlockStack>
                 </View>
             </Layout>
