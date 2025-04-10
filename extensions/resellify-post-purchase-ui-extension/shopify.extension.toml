@@ -1,4 +1,4 @@
-name = "my-post-purchase-ui-extension"
+name = "resellify-post-purchase-ui-extension"
 type = "checkout_post_purchase"
 
 
