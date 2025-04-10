@@ -22,7 +22,19 @@ import {
     TextContainer,
     View,
 } from "@shopify/post-purchase-ui-extensions-react";
+// import { ResellifyPopup } from './popup';
 
+function ResellifyPopup(){
+    return (
+        <View>
+            <BlockStack spacing="loose">
+                <CalloutBanner title="Add to Resellify">
+                    Review the following steps before adding your order to Resellify
+                </CalloutBanner>
+            </BlockStack>
+        </View>
+    )
+}
 
 render("Checkout::PostPurchase::Render", App);
 
@@ -86,6 +98,7 @@ export function App({ storage, inputData }) {
                         <Button >
                             Add to Resellify
                         </Button>
+                        <ResellifyPopup></ResellifyPopup>
                     </BlockStack>
                 </View>
             </Layout>
