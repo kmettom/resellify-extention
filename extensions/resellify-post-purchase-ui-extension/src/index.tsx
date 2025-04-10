@@ -6,8 +6,12 @@
  *     payment page loads.
  *  2. Render - If requested by `ShouldRender`, will be rendered after checkout
  *     completes
+ *
+ *     https://shopify.dev/docs/apps/build/checkout/product-offers/build-a-post-purchase-offer
+ *
  */
 import * as React from 'react';
+// import { useState } from 'react';
 
 import {
     extend,
@@ -22,26 +26,22 @@ import {
     TextContainer,
     View,
 } from "@shopify/post-purchase-ui-extensions-react";
-// import { ResellifyPopup } from './popup';
+import { ResellifyPopup } from './popup/popup';
 
-function ResellifyPopup(){
-    return (
-        <View>
-            <BlockStack spacing="loose">
-                <CalloutBanner title="Add to Resellify">
-                    Review the following steps before adding your order to Resellify
-                </CalloutBanner>
-            </BlockStack>
-        </View>
-    )
-}
+
 
 render("Checkout::PostPurchase::Render", App);
 
+// const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+const sendDataToResellify = () => {
+    console.log("sendDataToResellify");
+}
+
 // Top-level React component
 export function App({ storage, inputData }) {
-
     console.log("storage", storage, inputData)
+// const [isPopupOpen, setIsPopupOpen] = useState(false)
 
     const order = {
         lineItems: inputData.initialPurchase.lineItems.map(item => ({
@@ -52,7 +52,6 @@ export function App({ storage, inputData }) {
         })),
         totalPrice: inputData.initialPurchase.totalPriceSet.presentmentMoney.amount
     };
-
 
     if (!order || !order.lineItems) {
         return (
@@ -95,9 +94,11 @@ export function App({ storage, inputData }) {
                                 Total: ${order.totalPrice}
                             </TextBlock>
                         </TextContainer>
-                        <Button >
+                        {/*<Button onPress={() => setIsPopupOpen(true)}>*/}
+                        <Button onPress={sendDataToResellify } >
                             Add to Resellify
                         </Button>
+                        {/*<ResellifyPopup isOpen={isPopupOpen} onConfirm={sendDataToResellify} onClose={() => {setIsPopupOpen(false)}} ></ResellifyPopup>*/}
                         <ResellifyPopup></ResellifyPopup>
                     </BlockStack>
                 </View>
@@ -105,3 +106,5 @@ export function App({ storage, inputData }) {
         </BlockStack>
     );
 }
+
+

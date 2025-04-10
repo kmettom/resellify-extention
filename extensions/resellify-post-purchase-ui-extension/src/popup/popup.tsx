@@ -26,20 +26,10 @@ interface ResellifyPopupProps {
     isOpen: boolean;
     onClose: () => void;
     onConfirm: () => void;
-    orderDetails: {
-        lineItems: Array<{
-            id: string;
-            title: string;
-            quantity: number;
-            price: number;
-        }>;
-        totalPrice: number;
-    };
 }
 
-export function ResellifyPopupN({ isOpen, onClose, onConfirm, orderDetails }: ResellifyPopupProps) {
+export function ResellifyPopupN({ isOpen, onClose, onConfirm }: ResellifyPopupProps) {
     if (!isOpen) return null;
-
     return (
         <View>
             <BlockStack spacing="loose">
@@ -55,20 +45,6 @@ export function ResellifyPopupN({ isOpen, onClose, onConfirm, orderDetails }: Re
                             <TextBlock>2. We'll analyze market prices and trends</TextBlock>
                             <TextBlock>3. You'll receive recommendations for listing</TextBlock>
                         </BlockStack>
-                    </TextContainer>
-                </BlockStack>
-
-                <BlockStack spacing="tight">
-                    <TextContainer>
-                        <Heading>Order Summary</Heading>
-                        {orderDetails.lineItems.map((item) => (
-                            <TextBlock key={item.id}>
-                                {item.title} x {item.quantity} - ${item.price}
-                            </TextBlock>
-                        ))}
-                        <TextBlock emphasized>
-                            Total: ${orderDetails.totalPrice}
-                        </TextBlock>
                     </TextContainer>
                 </BlockStack>
 
