@@ -110,6 +110,64 @@ const [isPopupOpen, setIsPopupOpen] = useState(false);
             </Layout>
         </BlockStack>
     );
+
+
+//     const exampleUser = {
+//   userId: "user-123456789",
+//   firstName: "John",
+//   lastName: "Doe",
+//   username: "johndoe",
+//   dateOfBirth: "1990-05-15",
+//   gender: "male",
+//   interestedIn: "womenswear",
+//   accountVerified: true,
+//   createdAt: "2023-01-01T00:00:00Z",
+//   email: "john.doe@example.com",
+//   googleID: "",
+//   appleID: "",
+//   phoneNumber: "+1234567890",
+//   currency: "EUR"
+// };
+
+
+    // const exampleItem = {
+    //     itemId: "item-987654321",
+    //     userId: "user-123456789",
+    //     itemName: "Classic Black Blazer",
+    //     itemImages: [
+    //         {
+    //             url: "https://example.com/images/blazer-front.jpg",
+    //             isPrimary: true
+    //         },
+    //         {
+    //             url: "https://example.com/images/blazer-back.jpg",
+    //             isPrimary: false
+    //         }
+    //     ],
+    //     itemListingImages: [
+    //         {
+    //             url: "https://example.com/images/blazer-listing.jpg",
+    //             isPrimary: true
+    //         }
+    //     ],
+    //     itemDescription: "A timeless black blazer perfect for formal occasions. Made from high-quality wool blend fabric.",
+    //     itemCategory: "Outerwear",
+    //     brand: "Zara",
+    //     price: 89.99,
+    //     compareAtPrice: 129.99,
+    //     size: "M",
+    //     colours: ["Black"],
+    //     season: "All Season",
+    //     occasion: ["Work", "Formal", "Evening"],
+    //     materials: ["Wool", "Polyester"],
+    //     fabric: "Wool blend",
+    //     careDetails: ["Dry clean only", "Do not bleach", "Iron on low heat"],
+    //     comments: ["Great condition, worn only twice"],
+    //     status: "Available",
+    //     availableForSell: true,
+    //     addedOn: "2023-06-15T10:30:00Z",
+    //     soldOn: null
+    // };
 }
 
 
