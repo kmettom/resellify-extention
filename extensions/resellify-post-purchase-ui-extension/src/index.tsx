@@ -10,8 +10,8 @@
  *     https://shopify.dev/docs/apps/build/checkout/product-offers/build-a-post-purchase-offer
  *
  */
-import * as React from 'react';
-// import { useState } from 'react';
+// import * as React from 'react';
+import { useState } from 'react';
 
 import {
     extend,
@@ -28,9 +28,8 @@ import {
 } from "@shopify/post-purchase-ui-extensions-react";
 import { ResellifyPopup } from './popup/popup';
 
-
-
-render("Checkout::PostPurchase::Render", App);
+render("Checkout::PostPurchase::Render", ({storage, inputData}) => <App storage={storage} inputData={inputData}  />);
+// render("Checkout::PostPurchase::Render", App);
 
 // const [isPopupOpen, setIsPopupOpen] = useState(false)
 
@@ -41,7 +40,11 @@ const sendDataToResellify = () => {
 // Top-level React component
 export function App({ storage, inputData }) {
     console.log("storage", storage, inputData)
-// const [isPopupOpen, setIsPopupOpen] = useState(false)
+const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    setTimeout(() => {
+        console.log('open popup')
+    },2000)
 
     const order = {
         lineItems: inputData.initialPurchase.lineItems.map(item => ({
