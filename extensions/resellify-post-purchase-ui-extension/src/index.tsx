@@ -40,9 +40,11 @@ const sendDataToResellify = () => {
 // Top-level React component
 export function App({ storage, inputData }) {
     console.log("storage", storage, inputData)
+
 const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     setTimeout(() => {
+        setIsPopupOpen(true)
         console.log('open popup')
     },2000)
 
@@ -83,7 +85,7 @@ const [isPopupOpen, setIsPopupOpen] = useState(false);
                 <View>
                     <BlockStack spacing="loose">
                         <TextContainer>
-                            <Heading>Your Purchased Items</Heading>
+                            <Heading>Your Items:</Heading>
                             <BlockStack spacing="tight">
                                 {order.lineItems.map((item) => (
                                     <BlockStack key={item.id} spacing="tight">
@@ -101,8 +103,8 @@ const [isPopupOpen, setIsPopupOpen] = useState(false);
                         <Button onPress={sendDataToResellify } >
                             Add to Resellify
                         </Button>
-                        {/*<ResellifyPopup isOpen={isPopupOpen} onConfirm={sendDataToResellify} onClose={() => {setIsPopupOpen(false)}} ></ResellifyPopup>*/}
-                        <ResellifyPopup></ResellifyPopup>
+                        <ResellifyPopup isOpen={isPopupOpen} onConfirm={sendDataToResellify} onClose={() => {setIsPopupOpen(false)}} ></ResellifyPopup>
+                        {/*<ResellifyPopup></ResellifyPopup>*/}
                     </BlockStack>
                 </View>
             </Layout>

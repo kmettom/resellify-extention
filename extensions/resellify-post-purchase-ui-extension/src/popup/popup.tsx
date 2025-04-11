@@ -10,25 +10,13 @@ import {
     View,
 } from "@shopify/post-purchase-ui-extensions-react";
 
-export function ResellifyPopup(){
-    return (
-        <View>
-            <BlockStack spacing="loose">
-                <CalloutBanner title="Add to Resellify">
-                    Review the following steps before adding your order to Resellify
-                </CalloutBanner>
-            </BlockStack>
-        </View>
-    )
-}
-
 interface ResellifyPopupProps {
     isOpen: boolean;
     onClose: () => void;
     onConfirm: () => void;
 }
 
-export function ResellifyPopupN({ isOpen, onClose, onConfirm }: ResellifyPopupProps) {
+export function ResellifyPopup({ isOpen, onClose, onConfirm }: ResellifyPopupProps) {
     if (!isOpen) return null;
     return (
         <View>
@@ -39,11 +27,13 @@ export function ResellifyPopupN({ isOpen, onClose, onConfirm }: ResellifyPopupPr
 
                 <BlockStack spacing="loose">
                     <TextContainer>
-                        <Heading>Important Steps</Heading>
+                        <Heading>Add Your Purchase to Resellify</Heading>
                         <BlockStack spacing="tight">
-                            <TextBlock>1. Your order will be processed for resale</TextBlock>
-                            <TextBlock>2. We'll analyze market prices and trends</TextBlock>
-                            <TextBlock>3. You'll receive recommendations for listing</TextBlock>
+                            <TextBlock><TextBlock>1.</TextBlock> After checkout, add your Artknit pieces to Resellify’s digital wardrobe.</TextBlock>
+                            <TextBlock><TextBlock>2.</TextBlock> Sign up later using the same email you shop with—your items will
+                                be waiting.</TextBlock>
+                            <TextBlock><TextBlock>3.</TextBlock> Manage your wardrobe, style your looks, and resell pre-loved
+                                pieces with one click when you’re ready.</TextBlock>
                         </BlockStack>
                     </TextContainer>
                 </BlockStack>
