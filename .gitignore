@@ -28,3 +28,5 @@ extensions/*/dist
 # Ignore shopify files created during app dev
 .shopify/*
 .shopify.lock
+
+amplify_outputs.json
