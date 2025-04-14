@@ -29,13 +29,13 @@ import {
 } from "@shopify/post-purchase-ui-extensions-react";
 import { ResellifyPopup } from './popup/popup';
 
-extend('Checkout::PostPurchase::ShouldRender', (api) => {
-    console.log("api", api)
-    // Implement your Checkout::PostPurchase::ShouldRender extension point logic here
-    // If you hover over `api` in an editor that supports TypeScript, you’ll see
-    // the properties and methods available for this extension point, even if you
-    // are writing your extension in "vanilla" JavaScript.
-});
+// extend('Checkout::PostPurchase::ShouldRender', (api) => {
+//     console.log("api", api)
+//     // Implement your Checkout::PostPurchase::ShouldRender extension point logic here
+//     // If you hover over `api` in an editor that supports TypeScript, you’ll see
+//     // the properties and methods available for this extension point, even if you
+//     // are writing your extension in "vanilla" JavaScript.
+// });
 
 render("Checkout::PostPurchase::Render", ({storage, inputData}) => <App storage={storage} inputData={inputData}  />);
 
