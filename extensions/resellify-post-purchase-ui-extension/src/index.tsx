@@ -27,6 +27,7 @@ import {
     View,
 } from "@shopify/post-purchase-ui-extensions-react";
 import { ResellifyPopup } from './popup/popup';
+import {getItem} from "./api/orderService";
 
 render("Checkout::PostPurchase::Render", ({storage, inputData}) => <App storage={storage} inputData={inputData}  />);
 // render("Checkout::PostPurchase::Render", App);
@@ -34,18 +35,19 @@ render("Checkout::PostPurchase::Render", ({storage, inputData}) => <App storage=
 // const [isPopupOpen, setIsPopupOpen] = useState(false)
 
 const sendDataToResellify = () => {
-    console.log("sendDataToResellify");
+    getItem();
+    // console.log("sendDataToResellify");
 }
 
 // Top-level React component
 export function App({ storage, inputData }) {
-    console.log("storage", storage, inputData)
+    // console.log("storage", storage, inputData)
 
 const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     setTimeout(() => {
         setIsPopupOpen(true)
-        console.log('open popup')
+        // console.log('open popup')
     },2000)
 
     const order = {

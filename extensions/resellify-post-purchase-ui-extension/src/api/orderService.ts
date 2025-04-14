@@ -1,4 +1,20 @@
-import { post } from '@aws-amplify/api';
+import { post, get } from '@aws-amplify/api';
+
+export function getItem() {
+    console.log("getItem")
+    try {
+        const restOperation = get({
+            apiName: 'myRestApi',
+            path: 'items'
+        });
+        const response = restOperation.response.then((response) => {
+            console.log('GET call succeeded: ', response);
+            return response;
+        });
+    } catch (error) {
+        console.log('GET call failed: ', JSON.parse(error));
+    }
+}
 
 interface OrderItem {
     id: string;
