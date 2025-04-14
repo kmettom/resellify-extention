@@ -4,7 +4,7 @@ import { Amplify } from 'aws-amplify';
 // import { signUp } from "aws-amplify/auth";
 
 
-export function getItem() {
+export function signUpUser() {
 // import outputs from "./amplify_outputs.json";
 
     Amplify.configure({
