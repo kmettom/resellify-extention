@@ -71,7 +71,7 @@ render("Checkout::PostPurchase::Render", ({storage, inputData, locale, version, 
 const sendDataToResellify = async(inputData) => {
     const client = createStorefrontApiClient({
         storeDomain: inputData.shop.domain,
-        apiVersion: inputData.version,
+        apiVersion: '2025-04',
         publicAccessToken: inputData.token,
     });
 
@@ -90,7 +90,7 @@ const sendDataToResellify = async(inputData) => {
             handle: 'sample-product',
         },
     });
-    console.log("sendDataToResellify", data);
+    console.log("sendDataToResellify", data, errors, extensions);
 }
 
 // Top-level React component
