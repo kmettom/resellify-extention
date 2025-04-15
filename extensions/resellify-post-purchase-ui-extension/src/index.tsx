@@ -11,9 +11,6 @@
  *
  */
 
-// import * as React from 'react';
-import { useState } from 'react';
-
 import {
     extend,
     render,
@@ -28,40 +25,80 @@ import {
     View,
 } from "@shopify/post-purchase-ui-extensions-react";
 import { ResellifyPopup } from './popup/popup';
+import {createStorefrontApiClient} from '@shopify/storefront-api-client';
+import { useState } from 'react';
 
-extend("Checkout::PostPurchase::ShouldRender", async ({ storage }) => {
+extend("Checkout::PostPurchase::ShouldRender", async ({ inputData, storage, }) => {
     // const initialState = await getRenderData();
-    const render = true;
-    console.log("storage", storage)
-    // if (render) {
-        // Saves initial state, provided to `Render` via `storage.initialData`
-        // await storage.update(initialState);
-    // }
+
+        const client = createStorefrontApiClient({
+            storeDomain: inputData.shop.domain,
+            apiVersion: inputData.version,
+            publicAccessToken: inputData.token,
+        });
+
+        const productQuery = `
+  query ProductQuery($handle: String) {
+    product(handle: $handle) {
+      id
+      title
+      handle
+    }
+  }
+`;
+
+        const {data, errors, extensions} = await client.request(productQuery, {
+            variables: {
+                handle: 'sample-product',
+            },
+        });
+
+        const testProdData = { test: 'test'};
+
+        console.log("testProdData", testProdData)
+
+        await storage.update(testProdData);
+
     return {
-        render,
+        render:true,
     };
 });
 
-// extend('Checkout::PostPurchase::ShouldRender', (api) => {
-//     console.log("api", api)
-//     // Implement your Checkout::PostPurchase::ShouldRender extension point logic here
-//     // If you hover over `api` in an editor that supports TypeScript, you’ll see
-//     // the properties and methods available for this extension point, even if you
-//     // are writing your extension in "vanilla" JavaScript.
-//     return {
-//         true,
-//     };
-// });
 
-render("Checkout::PostPurchase::Render", ({storage, inputData}) => <App storage={storage} inputData={inputData}  />);
+render("Checkout::PostPurchase::Render", ({storage, inputData, locale, version, extensionPoint}) => <App storage={storage} inputData={inputData}  />);
 
-const sendDataToResellify = () => {
-    console.log("sendDataToResellify");
+// @ts-ignore
+const sendDataToResellify = async(inputData) => {
+    const client = createStorefrontApiClient({
+        storeDomain: inputData.shop.domain,
+        apiVersion: inputData.version,
+        publicAccessToken: inputData.token,
+    });
+
+    const productQuery = `
+  query ProductQuery($handle: String) {
+    product(handle: $handle) {
+      id
+      title
+      handle
+    }
+  }
+`;
+
+    const {data, errors, extensions} = await client.request(productQuery, {
+        variables: {
+            handle: 'sample-product',
+        },
+    });
+    console.log("sendDataToResellify", data);
 }
 
 // Top-level React component
 export function App({ storage, inputData }) {
-    console.log("storage", storage, inputData)
+    console.log("storage, inputData, locale, version, extensionPoint", storage, inputData)
+
+
+    sendDataToResellify(inputData)
 
 const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -123,10 +160,10 @@ const [isPopupOpen, setIsPopupOpen] = useState(false);
                             </TextBlock>
                         </TextContainer>
                         {/*<Button onPress={() => setIsPopupOpen(true)}>*/}
-                        <Button onPress={sendDataToResellify } >
-                            Add to Resellify
-                        </Button>
-                        <ResellifyPopup isOpen={isPopupOpen} onConfirm={sendDataToResellify} onClose={() => {setIsPopupOpen(false)}} ></ResellifyPopup>
+                        {/*<Button onPress={sendDataToResellify } >*/}
+                        {/*    Add to Resellify*/}
+                        {/*</Button>*/}
+                        {/*<ResellifyPopup isOpen={isPopupOpen} onConfirm={sendDataToResellify} onClose={() => {setIsPopupOpen(false)}} ></ResellifyPopup>*/}
                         {/*<ResellifyPopup></ResellifyPopup>*/}
                     </BlockStack>
                 </View>
